@@ -33,21 +33,21 @@ public class CheckBoxPanel extends JPanel {
         firefoxCheckBox.setFont(new Font("Serif", Font.BOLD, 20));
         firefoxCheckBox.setForeground(Color.gray);
         
-        operaCheckBox=new JCheckBox("Opera");
-        operaCheckBox.setFont(new Font("Serif", Font.BOLD, 20));
-        operaCheckBox.setForeground(Color.gray);
+//        operaCheckBox=new JCheckBox("Opera");
+//        operaCheckBox.setFont(new Font("Serif", Font.BOLD, 20));
+//        operaCheckBox.setForeground(Color.gray);
         
 		//Add action listeners
 		chromeCheckBox.addActionListener(new ChromeCheckBoxListener());
 		ieCheckBox.addActionListener(new IECheckBoxListener());
 		firefoxCheckBox.addActionListener(new FirefoxCheckBoxListener());
-		operaCheckBox.addActionListener(new OperaCheckBoxListener());
+//		operaCheckBox.addActionListener(new OperaCheckBoxListener());
 		
 		//Add check boxes to panel
 		add(chromeCheckBox);
 		add(ieCheckBox);
 		add(firefoxCheckBox);
-		add(operaCheckBox);
+//		add(operaCheckBox);
 	}
 }
 
