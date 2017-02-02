@@ -114,22 +114,22 @@ class FirefoxCheckBoxListener implements ActionListener {
 	}
 }
 
-class OperaCheckBoxListener implements ActionListener {
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		boolean isSelected = false;
-		RunPanel runPanel = new RunPanel();
-		
-		JCheckBox checkbox = (JCheckBox)e.getSource();
-		if(checkbox.isSelected()) {
-			isSelected = true;
-			//Opera check box is now selected
-			runPanel.setOperaCheckValue(isSelected);
-		} else {
-			//Opera check box is now unselected
-			runPanel.setOperaCheckValue(isSelected);
-		}
-	}
-}
+//class OperaCheckBoxListener implements ActionListener {
+//
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		
+//		boolean isSelected = false;
+//		RunPanel runPanel = new RunPanel();
+//		
+//		JCheckBox checkbox = (JCheckBox)e.getSource();
+//		if(checkbox.isSelected()) {
+//			isSelected = true;
+//			//Opera check box is now selected
+//			runPanel.setOperaCheckValue(isSelected);
+//		} else {
+//			//Opera check box is now unselected
+//			runPanel.setOperaCheckValue(isSelected);
+//		}
+//	}
+//}

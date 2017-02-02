@@ -86,9 +86,9 @@ public class RunPanel extends JPanel implements ActionListener {
 	public boolean getFirefoxCheckboxValue() {
 		return firefoxCheckboxValue;
 	}
-	public void setOperaCheckValue(boolean isChecked) {
-		operaCheckboxValue = isChecked; 
-	}
+//	public void setOperaCheckValue(boolean isChecked) {
+//		operaCheckboxValue = isChecked; 
+//	}
 //	public boolean getOperaCheckValue() {
 //		return operaCheckboxValue;
 //	}
@@ -139,7 +139,7 @@ public class RunPanel extends JPanel implements ActionListener {
 		System.out.println(chromeCheckboxValue);
 		System.out.println(ieCheckboxValue);
 		System.out.println(firefoxCheckboxValue);
-		System.out.println(operaCheckboxValue);
+//		System.out.println(operaCheckboxValue);
 		
 		System.out.println(drivers);
 		
