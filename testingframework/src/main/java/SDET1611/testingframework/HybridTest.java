@@ -39,23 +39,16 @@ public class HybridTest {
 	WebOperation WebOp;
 	
 	public HybridTest() throws IOException{
-		//TODO Set up to test all available drivers
-		Properties p = new Properties();
-		p.load(new FileInputStream(new File(home+"/src/main/resources/tests"+threadCount+++".properties")));
-		driverName = p.getProperty("driver");
-		OSName = p.getProperty("OS");
-		Bit = p.getProperty("bit");
-		setPropertiesPath(p.getProperty("propertiesFilePath").replace("\\", ""));
-		setKeywordPath(p.getProperty("keywordFilePath").replace("\\", ""));
-		setDataPath(p.getProperty("dataFilePath").replace("\\", ""));
+		driverName = PropObj.getDriver();
+		Thread.currentThread().setName(driverName);
+		OSName = PropObj.OS;
+		Bit = PropObj.bit;
+		setPropertiesPath(PropObj.propertiesFilePath.replace("\\", ""));
+		setKeywordPath(PropObj.keywordFilePath.replace("\\", ""));
+		setDataPath(PropObj.dataFilePath.replace("\\", ""));
 		
-		keywordSheetName = p.getProperty("keywordSheetNames").split(",");
-		dataSheetName = p.getProperty("dataSheetNames").split(",");
-		
-		System.out.println("DEBUG ---- key sheet name 1 --> "+keywordSheetName[0]);
-		System.out.println("DEBUG ---- data sheet name 1 --> "+dataSheetName[0]);
-		
-		//driver = DriverHolder.getChromeDriver();
+		keywordSheetName = PropObj.keywordSheetNames.split(",");
+		dataSheetName = PropObj.dataSheetNames.split(",");
 	}
 
 	/**
@@ -88,7 +81,9 @@ public class HybridTest {
 	public void allTests(String testCaseName, String keyword, String objectName, String objectType, String value) throws AssertionError {	
 		try{
 			Assert.assertEquals(WebOp.action(objectProperties, keyword, objectName, objectType, value), true, "Success at "+testCaseName + " " +keyword);
+			System.out.println("Success at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value);
 		}catch(AssertionError e){
+			System.out.println("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value);
 			Assert.fail("Failed at "+testCaseName + " " +keyword); //TODO make better failure message?
 		}
 	}
@@ -312,17 +307,17 @@ public class HybridTest {
 	}
 	
 	public void setPropertiesPath(){
-		PropertiesFilePath = home.getAbsolutePath()+"/src/test/resources/TestData/test.properties";
+//		PropertiesFilePath = home.getAbsolutePath()+"/src/test/resources/TestData/test.properties";
 		PropertiesFileName =  getFileName(PropertiesFilePath);
 	}
 	
 	public void setKeywordPath(){
-		KeywordFilePath =  home.getAbsolutePath()+"/src/test/resources/TestData/testKeyword.xlsx";
+//		KeywordFilePath =  home.getAbsolutePath()+"/src/test/resources/TestData/testKeyword.xlsx";
 		KeywordFileName =  getFileName(KeywordFilePath);
 	}
 	
 	public void setDataPath(){
-		DataFilePath =  home.getAbsolutePath()+"/src/test/resources/TestData/testData.xlsx";
+//		DataFilePath =  home.getAbsolutePath()+"/src/test/resources/TestData/testData.xlsx";
 		DataFileName =  getFileName(DataFilePath);
 	}
 	
