@@ -16,8 +16,6 @@ public class Main {
 	// args are excelFilePath, keyword
 	public static void main(String args[]) throws Exception {
 		// 2 is the number of arguments necessary to have drivers
-		System.out.println("ARGS IS " + args);
-		System.out.println("ARGS[0] IS " + args[0]);
 		if (args.length >= 2) {
 			String path = args[0];
 			File f = new File(path);

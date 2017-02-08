@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -196,6 +197,7 @@ public class RunPanel extends JPanel implements ActionListener {
 					keywordExcelFile.toString().replace("\\", "/"),
 					keywordSheet, dataSheet, OS, bit, drivers.toArray(new String[drivers.size()]));
 
+			drivers = Arrays.asList(testProperties.getDrivers());
 			for (int i = 0; i < drivers.size(); i++) {
 				TestThread T = new TestThread(drivers.get(i));
 				T.setName(drivers.get(i));
