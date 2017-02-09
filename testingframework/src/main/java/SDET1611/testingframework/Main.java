@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ServiceConfigurationError;
 
 /**
  * Allows the testing framework to be run headless using the commands:
@@ -20,7 +21,6 @@ public class Main {
 			String path = args[0];
 			File f = new File(path);
 			List<String> drivers = new ArrayList<String>(); 
-			System.out.println("ARGS.LENGTH IS ALWAYS ONE" + args.length);
 			for(int i = 1; i < args.length; i++){
 				drivers.add(args[i]);
 			}
@@ -37,6 +37,7 @@ public class Main {
 			}
 			else {
 				String OS;
+				String bit;
 				if (System.getProperty("os.name").contains("Windows")) {
 					OS = "WINDOWS";
 				} else if (System.getProperty("os.name").contains("Mac")) {
@@ -44,8 +45,19 @@ public class Main {
 				} else {
 					OS = "LINUX";
 				}
+				
+				if (System.getProperty("os.arch").contains("64")){
+					bit = "64";
+				}
+				else if (System.getProperty("os.arch").contains("86")){
+					bit = "32";
+				}
+				else {
+					bit = "Unsupported Processor";
+					throw new ServiceConfigurationError("Error: Unsupported Processor");
+				}
 
-				PropObj.tryToCreateInstance(path, path, "Keywords", "Data", OS, "64", drivers.toArray(new String[drivers.size()]));
+				PropObj.tryToCreateInstance(path, path, "Keywords", "Data", OS, bit, drivers.toArray(new String[drivers.size()]));
 	
 				for (int i = 0; i < drivers.size(); i++) {
 					TestThread T = new TestThread(drivers.get(i));

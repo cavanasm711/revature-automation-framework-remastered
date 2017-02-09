@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ServiceConfigurationError;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -167,7 +168,18 @@ public class RunPanel extends JPanel implements ActionListener {
 			OS = "LINUX";
 		}
 
-		String bit = "64";
+		String bit;
+		
+		if (System.getProperty("os.arch").contains("64")){
+			bit = "64";
+		}
+		else if (System.getProperty("os.arch").contains("86")){
+			bit = "32";
+		}
+		else {
+			bit = "Unsupported Processor";
+			throw new ServiceConfigurationError("Error: Unsupported Processor");
+		}
 
 		chromeCheckboxValue = getChromeCheckboxValue();
 		ieCheckboxValue = getIECheckboxValue();
