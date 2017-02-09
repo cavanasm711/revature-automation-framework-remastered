@@ -99,7 +99,7 @@ public class HybridTest {
 			System.out.println(
 					"Success at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value);
 		} catch (AssertionError e) {
-			System.out.println(
+			System.err.println(
 					"\n\nFailed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value + "\n");
 			Assert.fail("Failed at " + testCaseName + " " + keyword); // TODO
 																		// make
