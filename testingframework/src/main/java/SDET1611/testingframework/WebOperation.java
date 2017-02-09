@@ -1,6 +1,7 @@
 package SDET1611.testingframework;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -169,6 +170,14 @@ public class WebOperation {
 					}
 				} else {
 					System.out.println("DEBUG---cant find dat object : " + objectType + " " + objectName);
+				}
+				break;
+			case "WAIT":
+			case "PAUSE":
+			case "STOP":
+				try{TimeUnit.SECONDS.wait(Long.parseLong(value));}
+				catch(InterruptedException e){
+					System.out.println("Wait interrupted for some reason.");
 				}
 				break;
 			default:

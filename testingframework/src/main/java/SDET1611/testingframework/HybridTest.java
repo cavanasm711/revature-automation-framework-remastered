@@ -66,8 +66,10 @@ public class HybridTest {
 	public void setUp(ITestContext ctx) throws IOException {
 		driver = DriverHolder.getDriver(OSName, driverName, Bit);
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		TestRunner runner = (TestRunner) ctx;
 		
+		
+		
+		//TestRunner runner = (TestRunner) ctx;
 		//TODO Figure out a directory to send the test result HTML to.
 		//runner.setOutputDirectory("C:\\Users\\cavan\\Documents");
 		WebOp = new WebOperation(driver);
@@ -114,6 +116,14 @@ public class HybridTest {
 			System.out.println("\n\n");
 			System.out.println("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value + ". " + "objectName is not associated with any object on the current webpage." + "\n");
 			Assert.fail("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value);
+		} catch (NumberFormatException e){
+			System.out.println("\n\n");
+			System.out.println("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value + ". " + "Wait time was not a number.\n");
+			Assert.fail("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value + ". " + "Wait time was not a number.");
+		} catch (Exception e){
+			System.out.println("\n\n");
+			System.out.println("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value + ". " + "Unknown error.\n"+e.getMessage()+"\n");
+			Assert.fail("Failed at: " + testCaseName + " " + keyword + " " + objectName + " " + objectType + " " + value + ". " + "Unknown error." + e.getMessage());
 		}
 	}
 
