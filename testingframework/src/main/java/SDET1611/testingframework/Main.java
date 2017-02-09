@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceConfigurationError;
 
+import SDET1611.gui.GUI;
+
 /**
  * Allows the testing framework to be run headless using the commands:
  * mvn package
@@ -17,7 +19,13 @@ public class Main {
 	// args are excelFilePath, keyword
 	public static void main(String args[]) throws Exception {
 		// 2 is the number of arguments necessary to have drivers
-		if (args.length >= 2) {
+		if (args.length == 0){
+			GUI gui = new GUI();
+		}
+		else if (args.length == 1){
+			throw new NullPointerException("Error: Invalid number of arguments");
+		}
+		else {
 			String path = args[0];
 			File f = new File(path);
 			List<String> drivers = new ArrayList<String>(); 
@@ -67,9 +75,7 @@ public class Main {
 			}
 			System.gc();
 
-		} else {
-			throw new NullPointerException("Error: Invalid number of arguments");
-		}
+		} 
 	}
 	
 	private static boolean verifyDrivers(List<String> drivers){
