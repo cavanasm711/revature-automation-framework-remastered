@@ -3,6 +3,8 @@ accomplished through a combination of keyword and data driven testing. The
 user must supply an excel file containing two specifically named sheets:
 
 
+
+
 Keywords :
 	This spreadsheet will contain testing sections which contain individual
 	steps in the section to be run by the program. The first row contains a
@@ -62,6 +64,23 @@ Keywords :
 		|            |   Click   |   login   |    name     |                  |
 		|------------|-----------|-----------|-------------|------------------|
 
+	Valid keywords/operations to be used in the excel file are as follows:
+		- "CLICK"
+		- "SELECTBUTTON", "SELECT BUTTON", "SELECT_BUTTON", "SELECT DROPDOWN", "SELECTDROPDOWN", "SELECT_DROPDOWN"
+		- "DESELECT DROPDOWN", "DESELECTDROPDOWN", "DESELECT_DROPDOWN"
+		- "DESELECT ALL", "DESELECTALL", "DESELECT_ALL"
+		- "SELECT RADIO", "SELECTRADIO", "SELECT_RADIO", "SELECT CHECKBOX", "SELECTCHECKBOX", "SELECT_CHECKBOX"
+		- "DESELECT CHECKBOX", "DESELECTCHECKBOX", "DESELECT_CHECKBOX"
+		- "INPUT TEXT", "INPUT_TEXT", "INPUTTEXT", "INPUTS", "TYPES", "WRITES"
+		- "GO TO URL", "GO_TO_URL", "GOTOURL"
+		- "CHECK TITLE", "CHECK_TITLE", "CHECKTITLE", "GET TITLE", "GET_TITLE", "GETTITLE"
+		- "CHECK URL", "CHECK_URL", "CHECKURL", "GET URL", "GET_URL", "GETURL"
+		- "GET TEXT", "GET_TEXT", "GETTEXT"
+		
+	Valid element identifiers are:
+		"classname", "css", "id", "linktext", "name", "partiallink"
+		"tagname", "xpath", "csslocator"
+
 
 Data :
 	This sheet contains all of the variables used in the fifth column of the
@@ -84,3 +103,20 @@ interface appears. The user will upload their excel sheet and select browsers
 they wish to test before clicking run. The program will then perform each test
 within the keywords sheet once for each row of data within the data sheet and
 output the results.
+
+
+
+
+cmd/terminal :
+To run from the command prompt, you must first navigate to the root file with pom.xml, 
+and then build the project using the command 'mvn package'. Next, to execute the maven jar, 
+run the command 'mvn exec:java -Dexec.args="Path/to/file.xlsx driver1 driver2 ..."',
+where the first argument is the path of the test excel file and each subsequent 
+argument is a driver name
+
+*** LINUX SPECIFIC ***
+In order for the program to run from a linux terminal, the drivers must be made executable.
+This is very important, as the program will NOT throw a specific error if the drivers are 
+not executable. First, navigate to the file with the pom. Then run the command 
+'chmod +x src/main/resources/Drivers/*'
+Your drivers should now display as green instead of white, and are executable.
