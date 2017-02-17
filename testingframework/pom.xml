@@ -78,7 +78,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>SDET1611.testingframework.App</mainClass>
+							<mainClass>SDET1611.testingframework.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
